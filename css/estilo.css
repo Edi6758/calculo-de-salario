@@ -1,0 +1,47 @@
+.container {
+    margin-top: 30px;
+}
+
+form{
+    margin: auto;
+    width: 50%;
+    border: 3px solid #1f1d8d;
+    background-color: #f4f4f8;
+    border-radius: 15px;
+    padding: 20px;
+}    
+
+div > label{
+    color: #1f1d8d;
+    
+}
+
+div > h4 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1f1d8d;
+}
+
+div > hr {
+    border: 1px solid #1f1d8d;
+    background-color: #1f1d8d;
+}
+
+.btn-align{
+    width: 49%;
+}
+
+.form-btn{
+    text-align: center;
+    margin-top: 30px !important;
+}
+
+.msg{
+    display: none;
+}
+
+@media screen and (max-width: 600px){
+    form{
+        width: 100%;
+    }
+}

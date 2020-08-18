@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto inicial</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="bootstrap-4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <nav>
+        <ul class = "nav nav-pills">
+            <li class = "nav-item">
+                <a class = "nav-link active" href = "index.html">Cálculo</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link" href="#">Funcionário</a>
+            </li>
+            <li class = "nav-item">
+                <a class = "nav-link disabled" href="#" aria-disabled="true">Sobre</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form>
+            <div class = "form-group">
+                <h4><i class="fa fa-user"></i> Cálculo do Salário</h4> 
+                <hr>
+                <div id = "msg-erro" class = "alert alert-danger msg">
+                    <label>Preencha os campos corretamente!</label>
+                </div>       
+                <div id = "msg-sucesso" class = "alert alert-success msg">
+                    <label>Cálculo realizado com sucesso!</label>
+                </div>       
+            </div>
+            
+            <div class = "form-group">
+                <label>Nome</label>
+                <input class = "form-control" type="text" id = "nome">
+            </div>
+
+            <div class = "form-group">
+                <label>Valor Hora</label>
+                <input class = "form-control" type="number" id = "valorHr" step="0.10">
+            </div>
+
+            <div class = "form-group">
+                <label>Quantidade de Horas Trabalhadas</label>
+                <input class = "form-control" type="number" id = "qtde" step="0.10">
+            </div>
+
+            <div class = "form-group">
+                <label>Salário Bruto</label>
+                <input class = "form-control disabled" type="number" id= "salarioBruto" readonly>
+            </div>
+
+            <div class = "form-group">
+                <label>Gratificação</label>
+                <input class = "form-control disabled" type="number" id= "gratificacao" readonly>
+            </div>
+
+            <div class = "form-group">
+                <label>Salário Líquido</label>
+                <input class = "form-control disablad" type="number" id= "salarioLiquido" readonly>
+            </div>
+
+            <div class = "form-group form-btn">
+                <button class = "btn btn-outline-dark btn-align" type="reset">Limpar</button>
+                <button class = "btn btn-success btn-align" 
+                    type="button" onclick = "calcularSalario()">Calcular</button>
+            </div>
+
+
+
+        </form>
+    </div>
+
+    <script type = "text/javascript">
+        const calcularSalario = function(){
+            let nome = document.getElementById('nome').value
+            let valorHr = document.getElementById('valorHr').value
+            let qtde = document.getElementById('qtde').value
+            if (nome == "" || valorHr == "" || qtde == ""){
+
+                $("#msg-erro").slideDown(400).delay(2000).slideUp(400)
+            }else {
+
+                console.log(nome);
+                let salarioBruto = parseFloat(valorHr) * parseFloat(qtde)
+                let gratificacao = salarioBruto * 15/100 
+                let salarioLiquido = salarioBruto + gratificacao
+
+                document.getElementById('valorHr').value = parseFloat(valorHr).toFixed(2)
+
+                document.getElementById('salarioBruto').value = salarioBruto.toFixed(2)
+                document.getElementById('gratificacao').value = gratificacao.toFixed(2)
+                document.getElementById('salarioLiquido').value = salarioLiquido.toFixed(2)
+
+                $("#msg-sucesso").slideDown(400).delay(2000).slideUp(400)
+            }
+        }
+
+    </script>
+
+    <!--JS-->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="bootstrap-4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
